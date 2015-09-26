@@ -1,0 +1,99 @@
+---
+title       : Data Products Project
+subtitle    : Singapore Election Results 2015
+author      : PL Yap  
+job         : Data Projects
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Results of Singapore General Elections 2015  
+
+1. The Singapore General Election was held on 11 Sept 2015. General elections are held once every 4 - 5 years according to the Westminster System.  
+2. The following graphs below shows the performance of the ruling party (PAP) vs the results of the Opposition parties (Opp). There is a plot of PAP performance in 2011 (GE2011) and also a plot of the predicted results by book makers(Predicted) for the 2015 elections.  
+```{r Election Results, fig.width=10, fig.height=5,fig.align='center', echo=FALSE}
+library(ggplot2)
+library(knitr)
+
+## Read results into R 
+election <- read.csv("Election Results.csv",sep=";",header=TRUE,stringsAsFactors = FALSE)
+      ggplot() +
+        geom_line(data=election, aes(x=Electoral.Division,y=PAP.Actual,col="PAP",group=1)) +
+        geom_line(data=election, aes(x=Electoral.Division,y=Opp.Actual,col="Opp",group=2)) +
+        geom_line(data=election, aes(x=Electoral.Division,y=Predicted,col="Predict", group=3)) +
+        geom_line(data=election, aes(x=Electoral.Division,y=GE2011,col="GE2011", group=4)) +
+        labs(title = "Singapore Election Results 2015",size = 20) +
+        theme(legend.title=element_blank()) +
+        theme(axis.text.x=element_text(angle=60,hjust=1)) +
+        theme(plot.title  =element_text(size=20,colour="red")) +
+        theme(axis.title.x=element_text(size=16,color="blue")) +
+        theme(axis.title.y=element_text(size=16,color="blue")) +
+        xlab("Electoral Division") +
+        ylab("Percentage")         
+      
+```
+
+--- .class #id
+
+### Linear Regression of PAP % Votes Against Media Chatter  
+
+1.The Plot showed the scatterplot of the percentage wins by the PAP against the percentage of the media
+exposure in terms of blogs and media posts. This percentage is calculated as a percentage for each
+Electoral Division.  
+2. The green line shows the linear regression line. There is a correlation between the votes received by the PAP vs the percentage of media chatter about them.  
+3. The horizontal red line represents the 50% popular votes. The 2 divisions below the red line also received the lowest percentage of blog share by PAP.  
+```{r Linear Regression,fig.width=12, fig.height=4.5, fig.align='center', echo=FALSE}
+        ggplot(election,aes(Percent.Blogs,PAP.Actual)) +
+        geom_point() +
+        geom_hline(yintercept=50,colour="red") +
+        stat_smooth(method=lm,se=FALSE,colour="green",group=1) +
+        labs(title = "Percentage of Volts in each Electoral Division Vs Percentage of Media Chatter") +
+        theme(plot.title=element_text(size=20,colour="red")) +
+        xlab("Percentage of Media Chatter about PAP") +
+        ylab("Percentage of Votes by PAP") +
+        theme(axis.title.x=element_text(size=16,colour="darkblue")) +
+        theme(axis.title.y=element_text(size=16,colour="darkblue")) +
+        geom_text(aes(label=Electoral.Division),vjust=1)    
+```
+--- 
+
+--- 
+
+### Logistic Regression of PAP Wins Against Media Chatter  
+
+1. The Plot showed the logarithmic Regression of Win/Lose by the PAP versus the percentage of Blogs obtained.  
+2. The Logistic Regression gives a good prediction of electoral wins againsts the percentage of Blog Posts.  
+```{r Logistic Regression, fig.width=12, fig.height=4.5,fig.align="center",echo=FALSE }
+     pred_results <- suppressWarnings(glm(election$Results~election$Percent.Blogs,family="binomial"))
+      ggplot(election, aes(Percent.Blogs,pred_results$fitted),pch=19,col="blue") +
+        geom_point() +
+        geom_line() +
+        labs(title = "Wins and Losses each Electoral Division Vs Percentage of Media Chatter") +
+        theme(plot.title=element_text(size=20,colour="red")) +
+        xlab("Percentage of Media Chatter about PAP") +
+        ylab("Probability of Win") +
+        theme(axis.title.x=element_text(size=16,colour="darkblue")) +
+        theme(axis.title.y=element_text(size=16,colour="darkblue")) +
+        geom_text(aes(label=No.),vjust=1,size=4)
+```
+
+---
+
+## Observations
+
+1. The report shows that there is a correlation between the percentage of blogs post about PAP to their performance in the election.
+2. The Logistic Regression show that it is possible to predict the election wins from the percentage of blogs received. However as the next election is only 4 years later, we will have to wait until then to determine if this prediction holds true.
+
+
+### Acknowledgement
+
+Data of the media and blog posts of election candidates are compiled from the following site :
+http://research.larc.smu.edu.sg/ge2015/ (Living Area Research Centre, Singapore Management University)
+
+
+
+

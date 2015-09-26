@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Data Products Project</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Data Products Project">
+  <meta name="author" content="PL Yap">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Data Products Project</h1>
+    <h2>Singapore Election Results 2015</h2>
+    <p>PL Yap<br/>Data Projects</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Results of Singapore General Elections 2015</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>The Singapore General Election was held on 11 Sept 2015. General elections are held once every 4 - 5 years according to the Westminster System.<br></li>
+<li>The following graphs below shows the performance of the ruling party (PAP) vs the results of the Opposition parties (Opp). There is a plot of PAP performance in 2011 (GE2011) and also a plot of the predicted results by book makers(Predicted) for the 2015 elections.<br>
+<img src="assets/fig/Election Results-1.png" title="plot of chunk Election Results" alt="plot of chunk Election Results" style="display: block; margin: auto;" /></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h3>Linear Regression of PAP % Votes Against Media Chatter</h3>
+  </hgroup>
+  <article data-timings="">
+    <p>1.The Plot showed the scatterplot of the percentage wins by the PAP against the percentage of the media
+exposure in terms of blogs and media posts. This percentage is calculated as a percentage for each
+Electoral Division.<br>
+2. The green line shows the linear regression line. There is a correlation between the votes received by the PAP vs the percentage of media chatter about them.<br>
+3. The horizontal red line represents the 50% popular votes. The 2 divisions below the red line also received the lowest percentage of blog share by PAP.  </p>
+
+<h2><img src="assets/fig/Linear Regression-1.png" title="plot of chunk Linear Regression" alt="plot of chunk Linear Regression" style="display: block; margin: auto;" /></h2>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h3>Logistic Regression of PAP Wins Against Media Chatter</h3>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>The Plot showed the logarithmic Regression of Win/Lose by the PAP versus the percentage of Blogs obtained.<br></li>
+<li>The Logistic Regression gives a good prediction of electoral wins againsts the percentage of Blog Posts.<br>
+<img src="assets/fig/Logistic Regression-1.png" title="plot of chunk Logistic Regression" alt="plot of chunk Logistic Regression" style="display: block; margin: auto;" /></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Observations</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>The report shows that there is a correlation between the percentage of blogs post about PAP to their performance in the election.</li>
+<li>The Logistic Regression show that it is possible to predict the election wins from the percentage of blogs received. However as the next election is only 4 years later, we will have to wait until then to determine if this prediction holds true.</li>
+</ol>
+
+<h3>Acknowledgement</h3>
+
+<p>Data of the media and blog posts of election candidates are compiled from the following site :
+<a href="http://research.larc.smu.edu.sg/ge2015/">http://research.larc.smu.edu.sg/ge2015/</a> (Living Area Research Centre, Singapore Management University)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Results of Singapore General Elections 2015'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Linear Regression of PAP % Votes Against Media Chatter'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Logistic Regression of PAP Wins Against Media Chatter'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Observations'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
